@@ -5,12 +5,14 @@ const corsMiddleware = require('restify-cors-middleware');
 
 const server = restify.createServer();
 
+// this Middleware will get rid of CORS errors in the browser
 const cors = corsMiddleware({
     // preflightMaxAge: 5, //Optional
     origins: ["*"],
     allowHeaders: ['API-Token', 'Access-Control-Allow-Origin'],
     exposeHeaders: ['API-Token-Expiry' /*, 'Access-Control-Allow-Origin'*/ ]
 });
+// end cors
 
 server.pre(cors.preflight);
 server.use(cors.actual);
