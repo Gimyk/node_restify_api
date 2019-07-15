@@ -40,8 +40,8 @@ module.exports = server => {
         try {
             // Auth user
             const user = await auth.authenticate(email, password);
-            console.log('it is working from here => the user is --->', user);
-            console.log('the user in Json format --->', user.toJSON());
+            // console.log('it is working from here => the user is --->', user);
+            // console.log('the user in Json format --->', user.toJSON());
             // create jwt
             const token = jwt.sign(user.toJSON(), config.JWT_SECRETE, {
                 expiresIn: '20m'
@@ -49,9 +49,9 @@ module.exports = server => {
 
             // iat = issued at
             const { iat, exp } = jwt.decode(token);
-            console.log('this is the ait --->', iat);
-            console.log('this is the exp --->', exp);
-            console.log('this is the jwt --->', token);
+            // console.log('this is the ait --->', iat);
+            // console.log('this is the exp --->', exp);
+            // console.log('this is the jwt --->', token);
 
             res.send({ iat, exp, token });
 
